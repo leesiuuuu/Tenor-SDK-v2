@@ -25,6 +25,11 @@ public class KeywordRandomGIFLoad : MonoBehaviour
 	[SerializeField]
 	private bool isRandom = false;
 
+	public Result ResultObject
+	{
+		get { return r; }
+	}
+
 	[SerializeField]
 	private Result r;
 
@@ -32,10 +37,7 @@ public class KeywordRandomGIFLoad : MonoBehaviour
 	{
 		if(!isRandom)
 			SearchTenorGIF();
-		else
-			RandomSearchTenorGIF();
 	}
-
 	public void SearchTenorGIF()
 	{
 		// Initialize SDK
@@ -51,16 +53,11 @@ public class KeywordRandomGIFLoad : MonoBehaviour
 	}
 	public void RandomSearchTenorGIF()
 	{
-		// Initialize SDK
-		TenorAPI.Initialize("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
-
-		// Prepare Request data
-		RandomSearchRequest request = new RandomSearchRequest();
-		request.q = nameTag;
-		request.limit = "1";
-
-		// Call Coroutine to not freeze
-		StartCoroutine(TenorAPI.RandomSearch(request, ProcessAnswers));
+		int max = GameManager.instance.results.Count;
+		int idx = Random.Range(0, max);
+		Result randResult = GameManager.instance.results[idx];
+		r = randResult;
+		LoadAssets(randResult);
 	}
 
 	void ProcessAnswers(Response data)

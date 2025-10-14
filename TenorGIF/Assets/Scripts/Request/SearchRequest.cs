@@ -45,11 +45,15 @@ namespace TenorSDK.Request
 		}
 
 		public string getQueryString(string key) {
-			return Uri + "?q=" + q + 
-				"&key=" + key + 
-				"&client_key=" + "Unity_PC" + 
-				"&limit=" + limit +
-				"&contentfilter=high";
+			string s = Uri + "?q=" + q +
+				"&key=" + key +
+				"&client_key=" + "Unity_PC" +
+				"&limit=" + limit;
+			if(pos != null)
+			{
+				s += "&pos=" + pos;
+			}
+			return s;
 		}
 	}
 }
