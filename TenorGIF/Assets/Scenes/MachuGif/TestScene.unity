@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51419a73bb7da9a498a0643d674c42a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Subject: silksong
+  Subject: Valorant
   results: []
 --- !u!1 &1235503071
 GameObject:
@@ -1550,7 +1550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementWidth: 600
   elementHeight: 600
-  nameTag: silksong
+  nameTag: 
   isRandom: 1
   r:
     created: 0

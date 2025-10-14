@@ -5,6 +5,7 @@ using TenorSDK.Request;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class DataLoader : MonoBehaviour
 {
@@ -43,7 +44,8 @@ public class DataLoader : MonoBehaviour
 
 		while(loadedCount < totalToLoad)
 		{
-			float value = (float)loadedCount / totalToLoad;
+			float targetValue = (float)loadedCount / totalToLoad;
+
 			SearchRequest request = new SearchRequest();
 			request.q = GameManager.instance.Subject;
 			request.limit = limitPerPage;
@@ -52,14 +54,30 @@ public class DataLoader : MonoBehaviour
 
 			yield return TenorAPI.Search(request, OnPrograss);
 
-			loadingBar.fillAmount = value;
-			
+			StartCoroutine(SmoothFill(targetValue));
+
+			yield return new WaitForSeconds(0.1f);
 		}
 		yield return new WaitForSeconds(0.2f);
 
 		isLoading = false;
 		Debug.Log($"총 {loadedCount}개 로딩 완료!");
 		OnLoadComplete?.Invoke();
+	}
+
+	private IEnumerator SmoothFill(float target)
+	{
+		float start = loadingBar.fillAmount;
+		float t = 0f;
+
+		while(t < 1f)
+		{
+			t += Time.unscaledDeltaTime * 3f;
+			loadingBar.fillAmount = Mathf.Lerp(start, target, t);
+			yield return null;
+		}
+
+		loadingBar.fillAmount = target;
 	}
 
 	private void OnPrograss(Response data)
