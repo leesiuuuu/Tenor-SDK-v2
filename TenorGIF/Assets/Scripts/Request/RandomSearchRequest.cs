@@ -29,7 +29,7 @@ using System.Reflection;
 
 namespace TenorSDK.Request
 {	
-	public class SearchRequest : RequestGET
+	public class RandomSearchRequest : RequestGET
 	{
 		public string country; 		// specify default country for regional content; format is 2-letter ISO 3166-1 country code
 		public string key; 			// client key for privileged API access
@@ -41,15 +41,15 @@ namespace TenorSDK.Request
 
 		private string Uri = "/search";
 
-		public SearchRequest() {
+		public RandomSearchRequest() {
 		}
 
 		public string getQueryString(string key) {
-			return Uri + "?q=" + q + 
-				"&key=" + key + 
-				"&client_key=" + "Unity_PC" + 
+			return Uri + "?q=" + q +
+				"&key=" + key +
+				"&client_key=" + "Unity_PC" +
 				"&limit=" + limit +
-				"&contentfilter=high";
+				"&random=true";
 		}
 	}
 }

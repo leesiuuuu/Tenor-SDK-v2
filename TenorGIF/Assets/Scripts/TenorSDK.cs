@@ -56,6 +56,12 @@ namespace TenorSDK
 			return _apiCallResponse (request.getQueryString (key), delegateSearch);
 		}
 
+		// Method to call API End Point: Search https://tenor.com/gifapi#search
+		public static IEnumerator RandomSearch(RandomSearchRequest request, DelegateResponseAnswer delegateRandomSearch)
+		{
+			return _apiCallResponse(request.getQueryString(key), delegateRandomSearch);
+		}
+
 		// Method to call API End Point: Trending https://tenor.com/gifapi#trending
 		public static IEnumerator Trending(TrendingRequest request, DelegateResponseAnswer delegateTrending)
 		{
@@ -105,6 +111,7 @@ namespace TenorSDK
 		 */ 
 
 		private static IEnumerator _apiCallResponse(string uri, DelegateResponseAnswer delegateSearch) {
+			Debug.Log(TenorAPIUri + uri);
 			WWW www = new WWW(TenorAPIUri + uri);
 			yield return www;
 			if (www.error == "" || www.error == null) {
