@@ -33,23 +33,21 @@ public class GalleryGIFs : MonoBehaviour
                 continue;
             }
 
-            // 🔹 프리팹 생성
             GameObject videoGO = Instantiate(gifPrefab, container.transform);
 
-            // 🔹 비율 계산
             float ratio = elementWidth / media.dims[0];
             float elementHeight = media.dims[1] * ratio;
 
             RectTransform rt = videoGO.GetComponent<RectTransform>();
             rt.sizeDelta = new Vector2(elementWidth, elementHeight);
 
-            // 🔹 VideoPlayer 구성
             VideoPlayer vp = videoGO.GetComponent<VideoPlayer>();
             RawImage rawImage = videoGO.GetComponentInChildren<RawImage>();
             vp.source = VideoSource.Url;
             vp.url = media.url;
             vp.playOnAwake = false;
             vp.isLooping = true;
+            vp.audioOutputMode = VideoAudioOutputMode.None;
             vp.renderMode = VideoRenderMode.APIOnly;
             StartCoroutine(PrepareAndPlay(vp, rawImage));
 
