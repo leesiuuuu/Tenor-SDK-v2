@@ -22,7 +22,7 @@ public class HourlyTrendingExample : MonoBehaviour {
 	public void HourlyTrendingTenorGIF() {
 
 		// Initialize SDK
-		TenorAPI.Initialize ("LIVDSRZULELA");
+		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
 		HourlyTrendingRequest request = new HourlyTrendingRequest ();

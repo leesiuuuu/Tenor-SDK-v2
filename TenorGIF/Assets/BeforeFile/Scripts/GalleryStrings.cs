@@ -14,6 +14,9 @@ public class GalleryStrings : MonoBehaviour {
 	private float elementWidth;
 	private float elementHeight;
 
+	[SerializeField]
+	private GameObject TextTag;
+
 	// Use this for initialization
 	void Start () {		
 	}
@@ -27,14 +30,6 @@ public class GalleryStrings : MonoBehaviour {
 
 		float actualHeight = padding * -1;
 
-		// Get TextTagExampe
-		GameObject textTagExample = GameObject.Find ("TextTagExample");
-
-		// Calculate one time width and height
-		RectTransform textTagRT = textTagExample.GetComponent (typeof (RectTransform)) as RectTransform;
-		elementWidth = textTagRT.rect.width;
-		elementHeight = textTagRT.rect.height;
-
 		// Remove previous elements
 		foreach (Transform child in container.transform) {
 			GameObject.Destroy(child.gameObject);
@@ -43,7 +38,8 @@ public class GalleryStrings : MonoBehaviour {
 		for (int i = 0; i < data.Length; i++) {
 			
 			// Instatiate New Game Object and store data to show
-			GameObject tenorGO = Instantiate (textTagExample, container.transform);
+			GameObject tenorGO = Instantiate (TextTag, container.transform);
+
 			Text text = tenorGO.GetComponent<Text> ();
 			text.text = "#" + i + " " + data [i];
 

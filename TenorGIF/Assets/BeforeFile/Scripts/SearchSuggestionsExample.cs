@@ -23,7 +23,7 @@ public class SearchSuggestionsExample : MonoBehaviour {
 	public void SearchSuggestionsTenorGIF() {
 
 		// Initialize SDK
-		TenorAPI.Initialize ("LIVDSRZULELA");
+		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
 		SearchSuggestionsRequest request = new SearchSuggestionsRequest ();
@@ -32,7 +32,6 @@ public class SearchSuggestionsExample : MonoBehaviour {
 
 		// Call Coroutine to not freeze
 		StartCoroutine(TenorAPI.SearchSuggestions(request, ProcessAnswers));
-
 	}
 
 	void ProcessAnswers(ResultStringCollection data) {

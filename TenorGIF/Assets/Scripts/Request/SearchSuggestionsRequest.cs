@@ -18,6 +18,8 @@
 //
 // ***********************************************************************************************************************
 
+using UnityEditor;
+
 namespace TenorSDK.Request
 {	
 	public class SearchSuggestionsRequest : RequestGET
@@ -33,7 +35,9 @@ namespace TenorSDK.Request
 		}
 
 		public string getQueryString(string key) {
-			return Uri + "?key=" + key + generateQueryString ();
+			return Uri + "?key=" + key + "&client_key=Unity_PC" +
+				"&q=" + tag +
+				"&limit=" + limit;
 		}
 
 	}

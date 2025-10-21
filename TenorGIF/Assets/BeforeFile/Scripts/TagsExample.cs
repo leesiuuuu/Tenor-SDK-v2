@@ -22,7 +22,7 @@ public class TagsExample : MonoBehaviour {
 	public void TagsTenorGIF() {
 
 		// Initialize SDK
-		TenorAPI.Initialize ("LIVDSRZULELA");
+		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
 		TagRequest request = new TagRequest ();
