@@ -28,7 +28,7 @@ public class SearchSuggestionsExample : MonoBehaviour {
 		// Prepare Request data
 		SearchSuggestionsRequest request = new SearchSuggestionsRequest ();
 		request.limit = "10";
-		request.tag = inputTag.text;
+		request.q = inputTag.text;
 
 		// Call Coroutine to not freeze
 		StartCoroutine(TenorAPI.SearchSuggestions(request, ProcessAnswers));

@@ -39,20 +39,13 @@ namespace TenorSDK.Request
 		public string safesearch; 	// (values:off|moderate|strict) specify the content safety filter level
 		public string q; 			// a tag or search string
 
-		private string Uri = "/search";
+		private string Uri = "/search?";
 
 		public SearchRequest() {
 		}
 
 		public string getQueryString(string key) {
-			string s = Uri + "?q=" + q +
-				"&key=" + key +
-				"&client_key=" + "Unity_PC" +
-				"&limit=" + limit;
-			if(pos != null)
-			{
-				s += "&pos=" + pos;
-			}
+			string s = Uri + "key=" + key + generateQueryString();
 			return s;
 		}
 	}

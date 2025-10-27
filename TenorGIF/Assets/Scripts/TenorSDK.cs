@@ -111,7 +111,6 @@ namespace TenorSDK
 		 */ 
 
 		private static IEnumerator _apiCallResponse(string uri, DelegateResponseAnswer delegateSearch) {
-			Debug.Log(TenorAPIUri + uri);
 			WWW www = new WWW(TenorAPIUri + uri);
 			yield return www;
 			if (www.error == "" || www.error == null) {
@@ -139,11 +138,11 @@ namespace TenorSDK
 		}
 
 		private static IEnumerator _apiCallStringCollection(string uri, DelegateStringAnswer delegateSearch) {
+			Debug.Log(uri);
 			WWW www = new WWW(TenorAPIUri + uri);
 			yield return www;
 
 			if (www.error == "" || www.error == null) {
-				Debug.Log(www.text);
 				ResultStringCollection data = JsonUtility.FromJson<ResultStringCollection>(www.text);
 				if (delegateSearch != null) {
 					delegateSearch (data);
