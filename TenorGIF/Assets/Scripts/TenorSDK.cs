@@ -63,13 +63,13 @@ namespace TenorSDK
 		}
 
 		// Method to call API End Point: Trending https://tenor.com/gifapi#trending
-		public static IEnumerator Trending(TrendingRequest request, DelegateResponseAnswer delegateTrending)
+		public static IEnumerator Featured(FeatureRequest request, DelegateResponseAnswer delegateTrending)
 		{
 			return _apiCallResponse (request.getQueryString (key), delegateTrending);
 		}
 
 		// Method to call API End Point: Tags https://tenor.com/gifapi#tags
-		public static IEnumerator Tags(TagRequest request, DelegateTagCollectionAnswer delegateTags)
+		public static IEnumerator Categories(CategoriesRequest request, DelegateTagCollectionAnswer delegateTags)
 		{
 			return _apiCallTagCollection (request.getQueryString (key), delegateTags);
 		}
@@ -125,6 +125,7 @@ namespace TenorSDK
 		}
 
 		private static IEnumerator _apiCallTagCollection(string uri, DelegateTagCollectionAnswer delegateSearch) {
+			Debug.Log(uri);
 			WWW www = new WWW(TenorAPIUri + uri);
 			yield return www;
 			if (www.error == "" || www.error == null) {

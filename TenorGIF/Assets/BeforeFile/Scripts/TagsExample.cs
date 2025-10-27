@@ -5,7 +5,7 @@ using UnityEngine;
 using TenorSDK;
 using TenorSDK.Request;
 
-public class TagsExample : MonoBehaviour {
+public class CategoriesExample : MonoBehaviour {
 
 	public GalleryTags resultTags; 
 
@@ -25,11 +25,11 @@ public class TagsExample : MonoBehaviour {
 		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
-		TagRequest request = new TagRequest ();
+		CategoriesRequest request = new CategoriesRequest();
 		request.type = "featured";
 
 		// Call Coroutine to not freeze
-		StartCoroutine(TenorAPI.Tags(request, ProcessAnswers));
+		StartCoroutine(TenorAPI.Categories(request, ProcessAnswers));
 	}
 
 	void ProcessAnswers(ResultTags data) {

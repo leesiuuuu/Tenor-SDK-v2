@@ -5,7 +5,7 @@ using UnityEngine;
 using TenorSDK;
 using TenorSDK.Request;
 
-public class TrendingExample : MonoBehaviour {
+public class FeaturedExample : MonoBehaviour {
 
 	public GalleryGIFs resultGIFs; 
 
@@ -22,16 +22,14 @@ public class TrendingExample : MonoBehaviour {
 	public void TrendingTenorGIF() {
 
 		// Initialize SDK
-		TenorAPI.Initialize ("LIVDSRZULELA");
+		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
-		TrendingRequest request = new TrendingRequest ();
-		request.pos = "";
-		request.limit = "5";
+		FeatureRequest request = new FeatureRequest();
+		request.limit = "10";
 
 		// Call Coroutine to not freeze
-		StartCoroutine(TenorAPI.Trending(request, ProcessAnswers));
-
+		StartCoroutine(TenorAPI.Featured(request, ProcessAnswers));
 	}
 
 	void ProcessAnswers(Response data) {

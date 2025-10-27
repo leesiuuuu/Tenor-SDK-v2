@@ -21,13 +21,13 @@
 
 namespace TenorSDK.Request
 {	
-	public class TagRequest : RequestGET
+	public class CategoriesRequest : RequestGET
 	{
 		public string type;  // specify a category of tags to retrieve. Possible values: "featured", "explore". Multiple types can be specified, each type separated with a comma
 
-		private string Uri = "/tags";
+		private string Uri = "/categories";
 
-		public TagRequest() {
+		public CategoriesRequest() {
 		}
 
 		public string getQueryString(string key) {

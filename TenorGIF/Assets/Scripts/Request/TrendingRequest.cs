@@ -21,15 +21,19 @@
 
 namespace TenorSDK.Request
 {	
-	public class TrendingRequest : RequestGET
+	public class FeatureRequest : RequestGET
 	{
 		public string key; 	// client key for privileged API access
-		public string limit; 	// fetch up to a specified number of results (max: 50).
-		public string pos; 	// get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string
+		public string type; // 반환되는 카테고리 유형을 결정합니다. 기본값은 featured입니다. 허용되는 값은 featured 및 trending입니다.
+		public string searchfilter;
+		public string country;
+		public string media_filter;
+		public string limit;
+		public string pos;
 
 		private string Uri = "/trending";
 
-		public TrendingRequest() {
+		public FeatureRequest() {
 		}
 
 		public string getQueryString(string key) {
