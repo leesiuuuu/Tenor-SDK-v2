@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-using TenorSDK;
-using TenorSDK.Request;
 
-public class GalleryTags : MonoBehaviour {
+public class GalleryCategories : MonoBehaviour {
 
 	public Categories[] data;
 	public GameObject container;
-	public float padding = 10.0f;
-	public float elementWidth = 144.0f;
-	private float TAG_HEIGHT = 90.0f;
+	public GameObject CategoryPrefab;
 
 	// Use this for initialization
 	void Start () {		
@@ -25,31 +19,26 @@ public class GalleryTags : MonoBehaviour {
 
 	public void LoadAssets() {
 
-		float actualHeight = padding * -1;
-
 		// Remove all child from previous display
 		foreach (Transform child in container.transform) {
-			GameObject.Destroy(child.gameObject);
+			Destroy(child.gameObject);
 		}	
 
 		// Create all elements
 		for (int i = 0; i < data.Length; i++) {
 
+			Categories categories = data[i];
+
 			// Instatiate New Game Object
-			GameObject tenorGO = Instantiate (GameObject.Find ("TagContainer"), container.transform);
+			GameObject tenorGO = Instantiate (CategoryPrefab, container.transform);
 
-			// Look for the GIF asset
-			//UniGifImage imageGIF = tenorGO.GetComponent<UniGifImage> ();
-			//StartCoroutine(imageGIF.SetGifFromUrlCoroutine(data [i].image));
 
-			// Update Scroll position
-			tenorGO.transform.localPosition = new Vector3 (padding, actualHeight, 0); 
-			actualHeight -= (TAG_HEIGHT) + padding;	
+			GifPlayer gifPlayer = tenorGO.GetComponent<GifPlayer>();
+			StartCoroutine(gifPlayer.PlayGif(categories.image));
+
+			Text t = tenorGO.GetComponentInChildren<Text>();
+			t.text = data[i].name;
 
 		}
-
-		// Adjust Container Height
-		RectTransform rt = container.GetComponent (typeof (RectTransform)) as RectTransform;
-		rt.sizeDelta = new Vector2 (elementWidth + 2 * padding, actualHeight * -1);		
 	}
 }

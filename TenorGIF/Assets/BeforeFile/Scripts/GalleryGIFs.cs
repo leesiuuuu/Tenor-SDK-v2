@@ -44,8 +44,6 @@ public class GalleryGIFs : MonoBehaviour
             vp.renderMode = VideoRenderMode.APIOnly;
             StartCoroutine(PrepareAndPlay(vp, rawImage));
         }
-
-        RectTransform containerRT = container.GetComponent<RectTransform>();
     }
 
     private IEnumerator PrepareAndPlay(VideoPlayer vp, RawImage rawImage)

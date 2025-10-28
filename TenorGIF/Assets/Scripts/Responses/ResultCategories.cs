@@ -25,6 +25,6 @@ using UnityEngine;
 [System.Serializable]
 public class ResultCategories {
 	
-	public Categories[] categories;
+	public Categories[] tags;
 
 }

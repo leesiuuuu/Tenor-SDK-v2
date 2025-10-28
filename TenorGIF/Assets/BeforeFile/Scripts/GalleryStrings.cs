@@ -15,7 +15,7 @@ public class GalleryStrings : MonoBehaviour {
 	private float elementHeight;
 
 	[SerializeField]
-	private GameObject TextTag;
+	private GameObject StringPrefab;
 
 	// Use this for initialization
 	void Start () {		
@@ -32,13 +32,13 @@ public class GalleryStrings : MonoBehaviour {
 
 		// Remove previous elements
 		foreach (Transform child in container.transform) {
-			GameObject.Destroy(child.gameObject);
+			Destroy(child.gameObject);
 		}
 
 		for (int i = 0; i < data.Length; i++) {
 			
 			// Instatiate New Game Object and store data to show
-			GameObject tenorGO = Instantiate (TextTag, container.transform);
+			GameObject tenorGO = Instantiate (StringPrefab, container.transform);
 
 			Text text = tenorGO.GetComponent<Text> ();
 			text.text = "#" + i + " " + data [i];

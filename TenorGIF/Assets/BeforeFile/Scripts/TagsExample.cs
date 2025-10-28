@@ -7,7 +7,7 @@ using TenorSDK.Request;
 
 public class CategoriesExample : MonoBehaviour {
 
-	public GalleryTags resultTags; 
+	public GalleryCategories resultCategories; 
 
 	// Use this for initialization
 	void Start () {
@@ -33,8 +33,8 @@ public class CategoriesExample : MonoBehaviour {
 	}
 
 	void ProcessAnswers(ResultCategories data) {
-		resultTags.data = data.categories;
-		resultTags.LoadAssets ();
+		resultCategories.data = data.tags;
+		resultCategories.LoadAssets ();
 	}
 
 }

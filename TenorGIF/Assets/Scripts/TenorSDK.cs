@@ -118,6 +118,7 @@ namespace TenorSDK
 			Debug.Log(uri);
 			UnityWebRequest www = UnityWebRequest.Get(TenorAPIUri + uri);
 			yield return www.SendWebRequest();
+			Debug.Log(www.downloadHandler.text);
 			if (www.error == "" || www.error == null) {
 				ResultCategories data = JsonUtility.FromJson<ResultCategories>(www.downloadHandler.text);
 				if (delegateSearch != null) {
