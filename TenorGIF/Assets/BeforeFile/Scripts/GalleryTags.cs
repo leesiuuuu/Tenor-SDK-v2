@@ -8,7 +8,7 @@ using TenorSDK.Request;
 
 public class GalleryTags : MonoBehaviour {
 
-	public Tag[] data;
+	public Categories[] data;
 	public GameObject container;
 	public float padding = 10.0f;
 	public float elementWidth = 144.0f;
@@ -39,8 +39,8 @@ public class GalleryTags : MonoBehaviour {
 			GameObject tenorGO = Instantiate (GameObject.Find ("TagContainer"), container.transform);
 
 			// Look for the GIF asset
-			UniGifImage imageGIF = tenorGO.GetComponent<UniGifImage> ();
-			StartCoroutine(imageGIF.SetGifFromUrlCoroutine(data [i].image));
+			//UniGifImage imageGIF = tenorGO.GetComponent<UniGifImage> ();
+			//StartCoroutine(imageGIF.SetGifFromUrlCoroutine(data [i].image));
 
 			// Update Scroll position
 			tenorGO.transform.localPosition = new Vector3 (padding, actualHeight, 0); 

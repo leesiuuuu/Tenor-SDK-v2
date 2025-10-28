@@ -27,6 +27,7 @@ using System.Collections;
 
 using UnityEngine;
 using TenorSDK.Request;
+using UnityEngine.Networking;
 
 namespace TenorSDK
 {	
@@ -43,66 +44,55 @@ namespace TenorSDK
 
 		public delegate void DelegateResponseAnswer(Response inputObject);
 		public delegate void DelegateStringAnswer(ResultStringCollection inputObject);
-		public delegate void DelegateTagCollectionAnswer(ResultTags inputObject);
+		public delegate void DelegateTagCollectionAnswer(ResultCategories inputObject);
 
 		public static void Initialize(string customKey)
 		{
 			key = customKey;
 		}
 
-		// Method to call API End Point: Search https://tenor.com/gifapi#search
+		// Method to call API End Point: Search
 		public static IEnumerator Search(SearchRequest request, DelegateResponseAnswer delegateSearch)
 		{
 			return _apiCallResponse (request.getQueryString (key), delegateSearch);
 		}
 
-		// Method to call API End Point: Search https://tenor.com/gifapi#search
-		public static IEnumerator RandomSearch(RandomSearchRequest request, DelegateResponseAnswer delegateRandomSearch)
+		// Method to call API End Point: Featured
+		public static IEnumerator Featured(FeatureRequest request, DelegateResponseAnswer delegateFeatured)
 		{
-			return _apiCallResponse(request.getQueryString(key), delegateRandomSearch);
+			return _apiCallResponse (request.getQueryString (key), delegateFeatured);
 		}
 
-		// Method to call API End Point: Trending https://tenor.com/gifapi#trending
-		public static IEnumerator Featured(FeatureRequest request, DelegateResponseAnswer delegateTrending)
+		// Method to call API End Point: Categories
+		public static IEnumerator Categories(CategoriesRequest request, DelegateTagCollectionAnswer delegateCategories)
 		{
-			return _apiCallResponse (request.getQueryString (key), delegateTrending);
+			return _apiCallTagCollection (request.getQueryString (key), delegateCategories);
 		}
 
-		// Method to call API End Point: Tags https://tenor.com/gifapi#tags
-		public static IEnumerator Categories(CategoriesRequest request, DelegateTagCollectionAnswer delegateTags)
-		{
-			return _apiCallTagCollection (request.getQueryString (key), delegateTags);
-		}
-
-		// Method to call API End Point: Hourly Trending https://tenor.com/gifapi#hourly-trending
-		public static IEnumerator HourlyTrending(HourlyTrendingRequest request, DelegateStringAnswer delegateHourlyTrending)
-		{
-			return _apiCallStringCollection (request.getQueryString (key), delegateHourlyTrending);
-		}
-
-		// Method to call API End Point: Search Suggestions https://tenor.com/gifapi#suggestions
+		// Method to call API End Point: Search Suggestions 
 		public static IEnumerator SearchSuggestions(SearchSuggestionsRequest request, DelegateStringAnswer delegateSearchSuggestions)
 		{
 			return _apiCallStringCollection (request.getQueryString (key), delegateSearchSuggestions);
 		}
 
-		// Method to call API End Point: GIFs https://tenor.com/gifapi#gifs
-		public static IEnumerator GIFs(GIFsRequest request, DelegateResponseAnswer delegateGIF)
+		// Method to call API End Point: Auto Complete
+		public static IEnumerator AutoComplete(AutoCompleteRequest request, DelegateStringAnswer delegateAutoComplete)
 		{
-			return _apiCallResponse (request.getQueryString (key), delegateGIF);
+			return _apiCallStringCollection (request.getQueryString (key), delegateAutoComplete);
 		}
 
-		// Method to call API End Point: Register Share https://tenor.com/gifapi#registershare
+		// Method to call API End Point: Trending Search Terms
+		public static IEnumerator TrendingSearchTerms(TrendingTermsRequest request, DelegateStringAnswer delegateTrendingTerms)
+		{
+			return _apiCallStringCollection(request.getQueryString(key), delegateTrendingTerms);
+		}
+
+		// Method to call API End Point: Register Share
 		public static IEnumerator RegisterShare(RegisterShareRequest request, DelegateStringAnswer delegateRegisterShare)
 		{
 			return _apiCallStringCollection (request.getQueryString (key), delegateRegisterShare);
 		}
 
-		// Method to call API End Point: Auto Complete https://tenor.com/gifapi#autocomplete
-		public static IEnumerator AutoComplete(AutoCompleteRequest request, DelegateStringAnswer delegateAutoComplete)
-		{
-			return _apiCallStringCollection (request.getQueryString (key), delegateAutoComplete);
-		}
 
 
 		/* 
@@ -111,10 +101,10 @@ namespace TenorSDK
 		 */ 
 
 		private static IEnumerator _apiCallResponse(string uri, DelegateResponseAnswer delegateSearch) {
-			WWW www = new WWW(TenorAPIUri + uri);
-			yield return www;
+			UnityWebRequest www = UnityWebRequest.Get(TenorAPIUri + uri);
+			yield return www.SendWebRequest();
 			if (www.error == "" || www.error == null) {
-				Response data = JsonUtility.FromJson<Response>(www.text);
+				Response data = JsonUtility.FromJson<Response>(www.downloadHandler.text);
 				if (delegateSearch != null) {
 					
 					delegateSearch (data);
@@ -126,10 +116,10 @@ namespace TenorSDK
 
 		private static IEnumerator _apiCallTagCollection(string uri, DelegateTagCollectionAnswer delegateSearch) {
 			Debug.Log(uri);
-			WWW www = new WWW(TenorAPIUri + uri);
-			yield return www;
+			UnityWebRequest www = UnityWebRequest.Get(TenorAPIUri + uri);
+			yield return www.SendWebRequest();
 			if (www.error == "" || www.error == null) {
-				ResultTags data = JsonUtility.FromJson<ResultTags>(www.text);
+				ResultCategories data = JsonUtility.FromJson<ResultCategories>(www.downloadHandler.text);
 				if (delegateSearch != null) {
 					delegateSearch (data);
 				}
@@ -140,11 +130,11 @@ namespace TenorSDK
 
 		private static IEnumerator _apiCallStringCollection(string uri, DelegateStringAnswer delegateSearch) {
 			Debug.Log(uri);
-			WWW www = new WWW(TenorAPIUri + uri);
-			yield return www;
+			UnityWebRequest www = UnityWebRequest.Get(TenorAPIUri + uri);
+			yield return www.SendWebRequest();
 
 			if (www.error == "" || www.error == null) {
-				ResultStringCollection data = JsonUtility.FromJson<ResultStringCollection>(www.text);
+				ResultStringCollection data = JsonUtility.FromJson<ResultStringCollection>(www.downloadHandler.text);
 				if (delegateSearch != null) {
 					delegateSearch (data);
 				}

@@ -23,8 +23,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ResultTags {
-	
-	public Tag[] tags;
+public class Categories {
+
+	public string searchterm;
+	public string path;
+	public string image;
+	public string name;
 
 }

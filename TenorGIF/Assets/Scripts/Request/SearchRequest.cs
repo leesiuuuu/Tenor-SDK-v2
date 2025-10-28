@@ -18,34 +18,30 @@
 //
 // ***********************************************************************************************************************
 
-
-using System;
-using UnityEngine;
-using System.Threading;
-using System.Linq;
-using System.ComponentModel;
-using System.Collections;
-using System.Reflection;
-
 namespace TenorSDK.Request
 {	
 	public class SearchRequest : RequestGET
 	{
-		public string country; 		// specify default country for regional content; format is 2-letter ISO 3166-1 country code
 		public string key; 			// client key for privileged API access
-		public string limit; 			// fetch up to a specified number of results (max: 50).
+		public string q;            // a tag or search string
+		public string client_key;
+		public string searchfilter;
+		public string country; 		// specify default country for regional content; format is 2-letter ISO 3166-1 country code
 		public string locale; 		// specify default language to interpret search string; xx is ISO 639-1 language code, _YY (optional) is 2-letter ISO 3166-1 country code
+		public string contentfilter;
+		public string media_filter;
+		public string ar_range;		// Basic value is "all". Allowed values are "all", "wide", "standard".
+		public string random;		// true / false
+		public string limit; 		// fetch up to a specified number of results (max: 50).
 		public string pos; 			// get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string
-		public string safesearch; 	// (values:off|moderate|strict) specify the content safety filter level
-		public string q; 			// a tag or search string
 
-		private string Uri = "/search?";
+		private string Uri = "/search";
 
 		public SearchRequest() {
 		}
 
 		public string getQueryString(string key) {
-			string s = Uri + "key=" + key + generateQueryString();
+			string s = Uri + "?key=" + key + generateQueryString();
 			return s;
 		}
 	}

@@ -32,8 +32,8 @@ public class CategoriesExample : MonoBehaviour {
 		StartCoroutine(TenorAPI.Categories(request, ProcessAnswers));
 	}
 
-	void ProcessAnswers(ResultTags data) {
-		resultTags.data = data.tags;
+	void ProcessAnswers(ResultCategories data) {
+		resultTags.data = data.categories;
 		resultTags.LoadAssets ();
 	}
 

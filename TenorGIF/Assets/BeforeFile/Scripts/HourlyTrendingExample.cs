@@ -25,11 +25,11 @@ public class HourlyTrendingExample : MonoBehaviour {
 		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
-		HourlyTrendingRequest request = new HourlyTrendingRequest ();
-		request.pos = "";
+		//HourlyTrendingRequest request = new HourlyTrendingRequest ();
+		//request.pos = "";
 
 		// Call Coroutine to not freeze
-		StartCoroutine(TenorAPI.HourlyTrending(request, ProcessAnswers));
+		//StartCoroutine(TenorAPI.HourlyTrending(request, ProcessAnswers));
 
 	}
 
