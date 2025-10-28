@@ -20,7 +20,7 @@ public class GifPlayer : MonoBehaviour
 
 		if (www.result != UnityWebRequest.Result.Success)
 		{
-			Debug.LogError("GIF 다운로드 실패: " + www.error);
+			Debug.LogError("Failed Download GIF: " + www.error);
 			yield break;
 		}
 
