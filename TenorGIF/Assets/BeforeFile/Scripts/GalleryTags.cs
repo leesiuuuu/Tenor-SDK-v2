@@ -32,7 +32,6 @@ public class GalleryCategories : MonoBehaviour {
 			// Instatiate New Game Object
 			GameObject tenorGO = Instantiate (CategoryPrefab, container.transform);
 
-
 			GifPlayer gifPlayer = tenorGO.GetComponent<GifPlayer>();
 			StartCoroutine(gifPlayer.PlayGif(categories.image));
 

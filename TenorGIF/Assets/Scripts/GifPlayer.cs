@@ -29,7 +29,9 @@ public class GifPlayer : MonoBehaviour
 		List<Texture2D> textures = new List<Texture2D>();
 		List<float> delays = new List<float>();
 
-		// 1. 모든 프레임 읽기
+		int gifWidth = 0;
+		int gifHeight = 0;
+
 		using (GifStream gifStream = new GifStream(gifBytes))
 		{
 			while (gifStream.HasMoreData)
@@ -51,7 +53,35 @@ public class GifPlayer : MonoBehaviour
 			}
 		}
 
-		// 2. 프레임 리스트 반복 재생
+		gifWidth = textures[0].width;
+		gifHeight = textures[0].height;
+
+		RectTransform rt = rawImage.rectTransform;
+		float aspect = (float)gifWidth / gifHeight;
+
+		RectTransform parent = rt.parent as RectTransform;
+		Vector2 parentSize = parent.rect.size;
+
+		float parentAspect = parentSize.x / parentSize.y;
+
+		if (aspect > parentAspect)
+		{
+			float targetHeight = parentSize.y;
+			float targetWidth = targetHeight * aspect;
+			rt.sizeDelta = new Vector2(targetWidth, targetHeight);
+		}
+		else
+		{
+			float targetWidth = parentSize.x;
+			float targetHeight = targetWidth / aspect;
+			rt.sizeDelta = new Vector2(targetWidth, targetHeight);
+		}
+
+		rt.anchoredPosition = Vector2.zero;
+		rt.anchorMin = new Vector2(0.5f, 0.5f);
+		rt.anchorMax = new Vector2(0.5f, 0.5f);
+		rt.pivot = new Vector2(0.5f, 0.5f);
+
 		while (!Stop)
 		{
 			for (int i = 0; i < textures.Count; i++)
