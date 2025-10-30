@@ -5,7 +5,7 @@ using UnityEngine;
 using TenorSDK;
 using TenorSDK.Request;
 
-public class HourlyTrendingExample : MonoBehaviour {
+public class HourlyFeaturedExample : MonoBehaviour {
 
 	public GalleryStrings resultStrings; 
 

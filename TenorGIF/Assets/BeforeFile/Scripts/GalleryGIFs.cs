@@ -15,7 +15,10 @@ public class GalleryGIFs : MonoBehaviour
     public void LoadAssets()
     {
         foreach (Transform child in container.transform)
+        {
+            child.GetComponent<GifPlayer>().Stop = true;
             Destroy(child.gameObject);
+        }
 
         foreach (var result in data)
         {

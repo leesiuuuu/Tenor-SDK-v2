@@ -58,7 +58,7 @@ namespace TenorSDK
 		}
 
 		// Method to call API End Point: Featured
-		public static IEnumerator Featured(FeatureRequest request, DelegateResponseAnswer delegateFeatured)
+		public static IEnumerator Featured(FeaturedRequest request, DelegateResponseAnswer delegateFeatured)
 		{
 			return _apiCallResponse (request.getQueryString (key), delegateFeatured);
 		}

@@ -19,13 +19,13 @@ public class FeaturedExample : MonoBehaviour {
 	}
 
 	// Search Trending GIFs
-	public void TrendingTenorGIF() {
+	public void FeaturedTenorGIF() {
 
 		// Initialize SDK
 		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
-		FeatureRequest request = new FeatureRequest();
+		FeaturedRequest request = new FeaturedRequest();
 		request.limit = "10";
 
 		// Call Coroutine to not freeze

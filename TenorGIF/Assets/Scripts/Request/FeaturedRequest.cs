@@ -28,15 +28,22 @@ using System.Collections;
 
 namespace TenorSDK.Request
 {	
-	public class HourlyTrendingRequest : RequestGET
+	public class FeaturedRequest : RequestGET
 	{
-		public string key; 			// client key for privileged API access
-		public string limit; 			// fetch up to a specified number of results (max: 50).
-		public string pos; 			// get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string
+		public string key;          // client key for privileged API access
+		public string client_key;
+		public string searchfilter;
+		public string country;      // specify default country for regional content; format is 2-letter ISO 3166-1 country code
+		public string locale;       // specify default language to interpret search string; xx is ISO 639-1 language code, _YY (optional) is 2-letter ISO 3166-1 country code
+		public string contentfilter;
+		public string media_filter;
+		public string ar_range;     // Basic value is "all". Allowed values are "all", "wide", "standard".
+		public string limit;        // fetch up to a specified number of results (max: 50).
+		public string pos;
 
-		private string Uri = "/autocomplete?type=trending";
+		private string Uri = "/featured?";
 
-		public HourlyTrendingRequest() {
+		public FeaturedRequest() {
 		}
 
 		public string getQueryString(string key) {
