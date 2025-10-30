@@ -10,7 +10,7 @@ namespace TenorSDK.Request
 		public string locale;
 		public string limit;
 
-		private string Uri = "/trending_terms";
+		private string Uri = "/trending_terms?";
 
 		public TrendingTermsRequest()
 		{
@@ -18,7 +18,7 @@ namespace TenorSDK.Request
 
 		public string getQueryString(string key)
 		{
-			return Uri + "?key=" + key + generateQueryString();
+			return Uri + "key=" + key + generateQueryString();
 		}
 	}
 }

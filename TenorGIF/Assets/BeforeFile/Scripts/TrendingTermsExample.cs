@@ -5,7 +5,7 @@ using UnityEngine;
 using TenorSDK;
 using TenorSDK.Request;
 
-public class HourlyFeaturedExample : MonoBehaviour {
+public class TrendingTermsExample : MonoBehaviour {
 
 	public GalleryStrings resultStrings; 
 
@@ -19,17 +19,17 @@ public class HourlyFeaturedExample : MonoBehaviour {
 	}
 		
 	// Search Hourly Trending GIFs
-	public void HourlyTrendingTenorGIF() {
+	public void TrendingTermsTenorGIF() {
 
 		// Initialize SDK
 		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
 
 		// Prepare Request data
-		//HourlyTrendingRequest request = new HourlyTrendingRequest ();
-		//request.pos = "";
+		TrendingTermsRequest request = new TrendingTermsRequest ();
+		request.limit = "10";
 
 		// Call Coroutine to not freeze
-		//StartCoroutine(TenorAPI.HourlyTrending(request, ProcessAnswers));
+		StartCoroutine(TenorAPI.TrendingSearchTerms(request, ProcessAnswers));
 
 	}
 

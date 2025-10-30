@@ -115,10 +115,8 @@ namespace TenorSDK
 		}
 
 		private static IEnumerator _apiCallTagCollection(string uri, DelegateTagCollectionAnswer delegateSearch) {
-			Debug.Log(uri);
 			UnityWebRequest www = UnityWebRequest.Get(TenorAPIUri + uri);
 			yield return www.SendWebRequest();
-			Debug.Log(www.downloadHandler.text);
 			if (www.error == "" || www.error == null) {
 				ResultCategories data = JsonUtility.FromJson<ResultCategories>(www.downloadHandler.text);
 				if (delegateSearch != null) {
@@ -130,7 +128,6 @@ namespace TenorSDK
 		}
 
 		private static IEnumerator _apiCallStringCollection(string uri, DelegateStringAnswer delegateSearch) {
-			Debug.Log(uri);
 			UnityWebRequest www = UnityWebRequest.Get(TenorAPIUri + uri);
 			yield return www.SendWebRequest();
 
