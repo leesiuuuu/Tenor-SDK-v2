@@ -35,11 +35,10 @@ namespace TenorSDK
 	{
 
 		//
-		// NOTE: This example include a restricted, rate limited example key (LIVDSRZULELA) for you to use while evaluating our API. 
-		// Before deploying your integration to production, please request your own API key (it's free).
+		// NOTE: Before deploying your integration to production, please request your own API key (it's free).
 		//
 
-		public static string key = "TEST_API_KEY"; 	// client key for privileged API access
+		public static string key = "TEST_API_KEY";
 		private static string TenorAPIUri = "https://tenor.googleapis.com/v2";
 
 		public delegate void DelegateResponseAnswer(Response inputObject);
