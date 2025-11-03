@@ -22,7 +22,7 @@ public class SearchExample : MonoBehaviour {
 	public void SearchTenorGIF() {
 
 		// Initialize SDK
-		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
+		TenorAPI.Initialize ("TEST_API_KEY");
 
 		// Prepare Request data
 		SearchRequest request = new SearchRequest ();

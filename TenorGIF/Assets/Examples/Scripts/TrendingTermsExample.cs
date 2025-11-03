@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 using TenorSDK;
 using TenorSDK.Request;
 
-public class SearchSuggestionsExample : MonoBehaviour {
+public class TrendingTermsExample : MonoBehaviour {
 
 	public GalleryStrings resultStrings; 
-	public InputField inputTag;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -18,20 +17,20 @@ public class SearchSuggestionsExample : MonoBehaviour {
 	void Update () {
 
 	}
-
-	// Search Suggestions
-	public void SearchSuggestionsTenorGIF() {
+	
+	// Search Trending Gifs
+	public void TrendingTermsTenorGIF() {
 
 		// Initialize SDK
-		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");
+		TenorAPI.Initialize ("TEST_API_KEY");
 
 		// Prepare Request data
-		SearchSuggestionsRequest request = new SearchSuggestionsRequest ();
+		TrendingTermsRequest request = new TrendingTermsRequest ();
 		request.limit = "10";
-		request.q = inputTag.text;
 
 		// Call Coroutine to not freeze
-		StartCoroutine(TenorAPI.SearchSuggestions(request, ProcessAnswers));
+		StartCoroutine(TenorAPI.TrendingSearchTerms(request, ProcessAnswers));
+
 	}
 
 	void ProcessAnswers(ResultStringCollection data) {

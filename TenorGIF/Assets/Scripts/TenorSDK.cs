@@ -39,7 +39,7 @@ namespace TenorSDK
 		// Before deploying your integration to production, please request your own API key (it's free).
 		//
 
-		public static string key = "LIVDSRZULELA"; 	// client key for privileged API access
+		public static string key = "TEST_API_KEY"; 	// client key for privileged API access
 		private static string TenorAPIUri = "https://tenor.googleapis.com/v2";
 
 		public delegate void DelegateResponseAnswer(Response inputObject);
