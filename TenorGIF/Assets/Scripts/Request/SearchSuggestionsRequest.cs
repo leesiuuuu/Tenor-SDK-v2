@@ -29,13 +29,13 @@ namespace TenorSDK.Request
 		public string q; 			// search term
 		public string locale; 		// specify default language to interpret search string; xx is ISO 639-1 language code, _YY (optional) is 2-letter ISO 3166-1 country code
 
-		private string Uri = "/search_suggestions?";
+		private string Uri = "/search_suggestions";
 
 		public SearchSuggestionsRequest() {
 		}
 
 		public string getQueryString(string key) {
-			return Uri + "key=" + key + generateQueryString();
+			return Uri + "?key=" + key + generateQueryString();
 		}
 
 	}
