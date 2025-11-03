@@ -30,10 +30,9 @@ namespace TenorSDK.Request
 {	
 	public class AutoCompleteRequest : RequestGET
 	{
-		public string allterms; 	// fetch all results; available for privileged keys only, overrides limit.
 		public string key; 			// client key for privileged API access
-		public string limit; 		// fetch up to a specified number of results (max: 50).
 		public string q; 			// partially typed search term
+		public string limit; 		// fetch up to a specified number of results (max: 50).
 		public string locale; 		// specify default language to interpret search string; xx is ISO 639-1 language code, _YY (optional) is 2-letter ISO 3166-1 country code
 
 		private string Uri = "/autocomplete";

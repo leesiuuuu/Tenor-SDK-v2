@@ -19,7 +19,7 @@ public class CategoriesExample : MonoBehaviour {
 	}
 
 	// Search Tags
-	public void TagsTenorGIF() {
+	public void CategoriesTenorGIF() {
 
 		// Initialize SDK
 		TenorAPI.Initialize ("AIzaSyAWDcOdghingSu3gXlbv26sie7AZLlY1-Q");

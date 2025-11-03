@@ -30,18 +30,19 @@ namespace TenorSDK.Request
 {	
 	public class RegisterShareRequest : RequestGET
 	{
-		public string id; 			// id of GIF shared
-		public string key; 			// client key for privileged API access
-		public string scount; 		// number of prior shares
-		public string tag; 			// original tag or search string triggering the share
+		public string key;			// API key
+		public string id;           // id of GIF shared
+		public string country;
+		public string q;
 
-		private string Uri = "/registershare?";
+
+		private string Uri = "/registershare";
 
 		public RegisterShareRequest() {
 		}
 
 		public string getQueryString(string key) {
-			return Uri + "key=" + key + generateQueryString ();
+			return Uri + "?key=" + key + generateQueryString ();
 		}
 
 	}

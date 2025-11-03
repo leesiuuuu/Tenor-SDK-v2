@@ -7,7 +7,7 @@ using TenorSDK.Request;
 
 public class FeaturedExample : MonoBehaviour {
 
-	public GalleryGIFs resultGIFs; 
+	public GalleryGIFs resultGIFs;
 
 	// Use this for initialization
 	void Start () {

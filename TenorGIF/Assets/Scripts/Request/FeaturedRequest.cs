@@ -41,13 +41,13 @@ namespace TenorSDK.Request
 		public string limit;        // fetch up to a specified number of results (max: 50).
 		public string pos;
 
-		private string Uri = "/featured?";
+		private string Uri = "/featured";
 
 		public FeaturedRequest() {
 		}
 
 		public string getQueryString(string key) {
-			return Uri + "&key=" + key + generateQueryString ();
+			return Uri + "?key=" + key + generateQueryString ();
 		}
 
 	}

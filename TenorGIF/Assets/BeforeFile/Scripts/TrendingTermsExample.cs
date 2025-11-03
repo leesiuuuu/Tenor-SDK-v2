@@ -17,8 +17,8 @@ public class TrendingTermsExample : MonoBehaviour {
 	void Update () {
 
 	}
-		
-	// Search Hourly Trending GIFs
+	
+	// Search Trending Gifs
 	public void TrendingTermsTenorGIF() {
 
 		// Initialize SDK
